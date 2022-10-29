@@ -1,22 +1,38 @@
 from django.contrib import admin
-from . models import CabinetMember, Project, PublicSector, PublicUser,Municipality, Government,PublicSector
+from . models import BudgetAllocation,PromissedDuty, CabinetMember, CabinetPosition, Project, PublicSector, PublicUser,Municipality, Government,PublicSector
 # Register your models here.
 
+@admin.register(PromissedDuty)
+class PromissedDutyAdmin(admin.ModelAdmin):
+    fields = ('name','sector','message','complete')
+    list_display = ('name','sector','message', 'complete')
+    ordering = ('name',)
+@admin.register(BudgetAllocation)
+class BudgetAllocationAdmin(admin.ModelAdmin):
+    fields = ('public_sector','purpose','amount')
+    list_display = ('purpose','amount','public_sector')
+    ordering = ('amount',)
+    
+@admin.register(CabinetPosition)
+class CabinetPositionAdmin(admin.ModelAdmin):
+    fields = ('position',)
+    list_display = ('position',)
+    ordering = ('position',)
 @admin.register(CabinetMember)
 class CabinetMemberAdmin(admin.ModelAdmin):
-    fields = ('user', 'email', 'role','address','office_contact_number')
-    list_display = ('user', 'email', 'role','address','office_contact_number')
+    fields = ('user', 'role','address','office_contact_number')
+    list_display = ('user', 'role','address','office_contact_number')
     ordering = ('role',)
 
 @admin.register(PublicUser)
 class PublicUserAdmin(admin.ModelAdmin):
-    fields = ('user','email', 'address','emplyment_status')
-    list_display = ('user','email', 'address','emplyment_status')
-    ordering = ('email',)
+    fields = ('user', 'address','emplyment_status')
+    list_display = ('user', 'address','emplyment_status')
+    ordering = ('address',)
 
 @admin.register(PublicSector)
 class PublicSectorAdmin(admin.ModelAdmin):
-    fields = ('name', 'year_budget', 'Head_minister')
+    fields = ('name', 'year_budget', 'head_minister')
     list_display = ('name', 'year_budget')
     ordering = ('name',)
 
@@ -28,8 +44,8 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Government)
 class GovernmentAdmin(admin.ModelAdmin):
-    fields = ('political_party', 'year_budget', 'municipality')
-    list_display = ('political_party', 'year_budget',)
+    fields = ('political_party', 'total_budget', 'promissed_duties')
+    list_display = ('political_party', 'total_budget')
     ordering = ('political_party',)
 
 @admin.register(Municipality)
