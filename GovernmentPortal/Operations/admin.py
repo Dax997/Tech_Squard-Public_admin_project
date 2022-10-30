@@ -1,7 +1,13 @@
 from django.contrib import admin
-from . models import BudgetAllocation,PromissedDuty, CabinetMember, CabinetPosition, Project, PublicSector, PublicUser,Municipality, Government,PublicSector
+from . models import BudgetAllocation,PublicComment,PromissedDuty, CabinetMember, CabinetPosition, Project, PublicSector, PublicUser,Municipality, Government,PublicSector
 # Register your models here.
 
+@admin.register(PublicComment)
+class PublicCommentAdmin(admin.ModelAdmin):
+    fields = ('user','comment','project')
+    list_display = ('user','date_time','comment','project')
+    ordering = ('user',)
+    
 @admin.register(PromissedDuty)
 class PromissedDutyAdmin(admin.ModelAdmin):
     fields = ('name','sector','message','complete')
@@ -38,8 +44,8 @@ class PublicSectorAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    fields = ('name', 'sector', 'budget','project_manager')
-    list_display = ('name', 'sector', 'budget','project_manager')
+    fields = ('name', 'sector', 'budget','project_manager', 'project_status',)
+    list_display = ('name', 'sector', 'budget','project_manager', 'project_status')
     ordering = ('name',)
 
 @admin.register(Government)

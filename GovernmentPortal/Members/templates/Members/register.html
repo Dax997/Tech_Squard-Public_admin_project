@@ -1,12 +1,24 @@
 {% extends 'Operations/base.html' %}
-{% load static%}
-
+{% load static %}
 {% block head %}
-<link rel="stylesheet" href="">
-<!-- Add you css links here for this page only like the one above -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+{% endblock %}
+{% block title %}
+    Register Page
 {% endblock %}
 
+
 {% block content %}
- <!-- Add the content of the page here -->
- <h1>Register page</h1>
-{% endblock%}
+    
+<div class="action-bar">
+
+  </div>
+  <form class="login-form" action="" method="post">
+      {% csrf_token %}
+        {{form.as_p}}
+        
+        <p class="link">Already Have an Account, Login <a href="{% url 'login' %}">here</a></p>
+      <button type="submit" class="btn btn-read-more">Submit</button>
+  </form>
+{% endblock %}

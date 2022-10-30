@@ -1,0 +1,28 @@
+.projects-wrapper{
+    display:flex;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.heading {
+    width: 100%;
+    text-align:center;
+    margin: 45px auto;
+}
+
+.projects {
+    width: 65%;
+}
+
+.projects ul {
+    list-style-type:none;
+}
+.project{
+    padding: 15px;
+}
+.project h3 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    color: orange;
+   
+}
