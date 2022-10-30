@@ -1,0 +1,55 @@
+<header class="header bg-light">
+    <nav class="nav-bar ">
+          <div class="nav-wrapper">
+            <a class="logo" href="{% url 'homepage' %}">People's_Government</a>
+            <ul class="navbar-menu">
+  
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="{% url 'projects' %}">Projects</a>
+              </li>
+  
+              
+              
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">Track resouces</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">View Updates</a>
+              </li>
+              
+  
+              
+  
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{% url 'logout' %}">Logout</a>
+                </li>
+                    {% if user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#">Admin</a>
+                    </li>
+                    {% endif %}
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+                
+                
+  
+              
+       
+              
+                  
+            </ul>
+  
+            
+          </div>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+      </nav>
+    </header>

@@ -2,15 +2,53 @@
 {% load static%}
 
 {% block head %}
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
 <!-- Add you css links here for this page only like the one above -->
 {% endblock %}
 
 {% block title%}
-<!-- Put title Here -->
+Projects
 {% endblock%}
 
 {% block content %}
  <!-- Add the content of the page here -->
- <h1>Projects page</h1>
+ <h1 class="heading">All Government Projects for:</h1>
+
+ <div class="projects-wrapper">
+    <div class="projects">
+        <ul>
+            {% for project in project_list %}
+            <li>
+                <div class="project">
+                    <h3>{{project.name}}</h3>
+                    <h5>Sector: {{project.sector}}</h5>
+                    <h6>Total budget of the project: {{project.budget}}</h6>
+                    <h6>Project Manager: {{project.project_manager}}</h6>
+                    {% for comment in project_comment_list %}
+                        
+                            <div class="comments">
+                                <p class="username">{{comment.user.username}}</p>
+                                <p class="date">{{comment.date_time}}</p>
+                                <p class="comment">{{comment}}</p>
+                            </div>
+                        
+                    {% endfor %}
+    
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="navigation">
+        <h4>Government Sectors</h4>
+        <ul>
+            <li><a href="">Health</a></li>
+            <li><a href="">Education</a></li>
+            <li><a href="">Transport</a></li>
+            <li><a href="">Defense</a></li>
+            <li><a href="">Finance</a></li>
+        </ul>
+    </div>
+ </div>
 {% endblock%}
